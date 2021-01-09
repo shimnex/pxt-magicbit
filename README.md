@@ -1,4 +1,4 @@
-# MagicBit
+# MagicBit without NeoPixel support (save memory)
 [中文版](README_zh.md)
 
 [Emakefun](www.emakefun.com) magicbit expansion board for micro:bit
