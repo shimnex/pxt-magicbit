@@ -5,49 +5,6 @@ load dependency
 "magicbit": "file:../pxt-magicbit"
 */
 
-enum RgbColors {
-        //% block=red
-        red = 0xFF0000,
-        //% block=orange
-        orange = 0xFFA500,
-        //% block=yellow
-        yellow = 0xFFFF00,
-        //% block=green
-        green = 0x00FF00,
-        //% block=blue
-        blue = 0x0000FF,
-        //% block=indigo
-        indigo = 0x4b0082,
-        //% block=violet
-        violet = 0x8a2be2,
-        //% block=purple
-        purple = 0xFF00FF,
-        //% block=white
-        white = 0xFFFFFF,
-        //% block=black
-        black = 0x000000
-}
-
-enum RgbUltrasonics {
-    //% block=left
-    left = 0x00,
-    //% block=right
-    right = 0x01,
-    //% block=all
-    all = 0x02
-}
-
-enum ColorEffect {
-    //% block=none
-    none = 0x00,
-    //% block=breathing
-    breathing = 0x01,
-    //% block=rotate
-    rotate = 0x02,
-    //% block=flash
-    flash = 0x03
-}
-
 //% color="#EE6A50" weight=10 icon="\uf013"
 namespace magicbit {
     const PCA9685_ADDRESS = 0x40
@@ -457,51 +414,6 @@ namespace magicbit {
         for (let idx = 1; idx <= 4; idx++) {
             stopMotor(idx);
         }
-    }
-
-    /**
-     * Get RUS04 distance
-     * @param pin Microbit ultrasonic pin; eg: P2
-    */
-    //% blockId=magicbit_ultrasonic block="Read RgbUltrasonic Distance|pin %pin|cm"
-    //% weight=78
-    export function Ultrasonic(pin: DigitalPin): number {
-        return UltrasonicVer(pin, SonarVersion.V1);
-    }
-
-    function UltrasonicVer(pin: DigitalPin, v: SonarVersion): number {
-
-        // send pulse
-        if (v == SonarVersion.V1) {
-            pins.setPull(pin, PinPullMode.PullNone);
-        }
-        else { pins.setPull(pin, PinPullMode.PullDown); }
-        pins.digitalWritePin(pin, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(pin, 1);
-        control.waitMicros(50);
-        pins.digitalWritePin(pin, 0);
-
-        // read pulse
-        let d = pins.pulseIn(pin, PulseValue.High, 25000);
-        let ret = d;
-        // filter timeout spikes
-        if (ret == 0 && distanceBuf != 0) {
-            ret = distanceBuf;
-        }
-        distanceBuf = d;
-        if (v == SonarVersion.V1) {
-            return Math.floor(ret * 9 / 6 / 58);
-        }
-        return Math.floor(ret / 40 + (ret / 800));
-        // Correction
-    }
-
-    function RgbDisplay(indexstart: number, indexend: number, rgb: RgbColors): void {
-        for (let i = indexstart; i <= indexend; i++) {
-			neoStrip.setPixelColor(i, rgb);
-		}
-        neoStrip.show();
     }
 
 }
