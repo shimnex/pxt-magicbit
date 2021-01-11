@@ -58,11 +58,6 @@ namespace magicbit {
         STPM2 = 0x1
     }
 
-    export enum SonarVersion {
-        V1 = 0x1,
-        V2 = 0x2
-    }
-
     export enum Turns {
         //% blockId="T1B4" block="1/4"
         T1B4 = 90,

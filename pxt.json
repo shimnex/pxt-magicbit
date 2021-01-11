@@ -1,26 +1,17 @@
 {
-    "name": "magicbit",
+    "name": "magicbit-servo",
     "version": "1.0.0",
-    "description": "Emakefun magicbit expansion board",
+    "description": "Emakefun magicbit expansion board (servo & motor only)",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "microphone": "*"
     },
     "files": [
         "README.md",
         "main.ts",
-        "shims.d.ts",
-        "enums.d.ts",
-        "ir.cpp",
-        "ReceiverIR.cpp",
-        "ReceiverIR.h",
-        "RemoteIR.h",
-        "TransmitterIR.cpp",
-        "TransmitterIR.h",
+        "_locales/fr/magicbit-strings.json",
         "_locales/zh/magicbit-strings.json"
-    ],
-    "testFiles": [
-        "test.ts"
     ],
     "public": true,
     "preferredEditor": "tsprj"
