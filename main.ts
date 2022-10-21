@@ -410,5 +410,11 @@ namespace magicbit {
             stopMotor(idx);
         }
     }
+	
+    //% blockId=Ultrasonic_reading_distance block="On-board Ultrasonic reading distance"
+    //% weight=77
+    export function Ultrasonic_reading_distance(): number {
+        return sensors.Ultrasonic(DigitalPin.P2);
+    }
 
 }
